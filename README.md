@@ -20,18 +20,25 @@ To get started with this project, follow these steps:
    git clone <repository-url>
 Install Dependencies: Navigate to the project directory and install the required dependencies using Composer.
 
+bash
+Copy code
 composer install
 Set Up Environment Variables: Create a .env file by copying the .env.example file and configuring it with your database and mail settings.
 
 Generate Application Key: Generate the Laravel application key.
 
+bash
+Copy code
 php artisan key:generate
-
 Run Migrations: Set up the database tables by running the migrations.
 
+bash
+Copy code
 php artisan migrate
 Start the Development Server: You can use Laravel's built-in development server to run the API locally.
 
+bash
+Copy code
 php artisan serve
 The API will now be accessible at http://localhost:8000.
 
