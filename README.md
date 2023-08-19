@@ -1,66 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Student Data Management API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Welcome to the Student Data Management API project. This API allows you to import student records, enroll students in different cohorts, and view student data. Here, we'll guide you through setting up and using this API.
 
-## About Laravel
+## Table of Contents
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Getting Started](#getting-started)
+- [Importing Student Data](#importing-student-data)
+- [Enrolling Students](#enrolling-students)
+- [Viewing Student Data](#viewing-student-data)
+- [Documentation](#documentation)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Getting Started
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+To get started with this project, follow these steps:
 
-## Learning Laravel
+1. **Clone the Repository**: Start by cloning this repository to your local machine.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+   ```bash
+   git clone <repository-url>
+Install Dependencies: Navigate to the project directory and install the required dependencies using Composer.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+composer install
+Set Up Environment Variables: Create a .env file by copying the .env.example file and configuring it with your database and mail settings.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Generate Application Key: Generate the Laravel application key.
 
-## Laravel Sponsors
+php artisan key:generate
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Run Migrations: Set up the database tables by running the migrations.
 
-### Premium Partners
+php artisan migrate
+Start the Development Server: You can use Laravel's built-in development server to run the API locally.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+php artisan serve
+The API will now be accessible at http://localhost:8000.
 
-## Contributing
+Importing Student Data
+API Endpoint
+URL: /import-students
+Method: POST
+Input: Excel file with student records (Columns: Name, Email, Phone)
+Output: Success message and confirmation emails sent to students
+To import student data, follow these steps:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Access the import students form by visiting http://localhost:8000/import-students.
 
-## Code of Conduct
+Choose an Excel file containing student records and submit the form.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Upon successful import, a confirmation email will be sent to each student.
 
-## Security Vulnerabilities
+Enrolling Students
+API Endpoint
+URL: /enroll-students
+Method: POST
+Input: Student ID, Array of Cohort Names
+Output: Success message and students enrolled in specified cohorts
+To enroll students in cohorts, follow these steps:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Access the enroll students form by visiting http://localhost:8000/enroll-students.
 
-## License
+Select a student from the dropdown list and specify the cohorts you want to enroll them in.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Submit the form, and the selected student will be enrolled in the chosen cohorts.
+
+Viewing Student Data
+API Endpoint
+URL: /view-student-data
+Method: GET
+Output: Paginated list of students with their enrolled cohorts
+To view student data, access the API endpoint:
+
+http://localhost:8000/view-student-data
+This endpoint will provide a paginated list of students along with the cohorts they are part of.
+
+Documentation
+For more details on API endpoints and usage, refer to the official documentation here.
+
+Thank you for using the Student Data Management API. If you encounter any issues or have questions, please feel free to contact me. @kaushalnbt@gmail.com
